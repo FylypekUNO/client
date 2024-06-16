@@ -8,13 +8,6 @@ const Header = () => {
       </div>
       <div className="text-lg font-semibold flex justify-center items-center px-2 text-blue-500">
         Profile
-        <div className="w-12 h-12 rounded-full overflow-hidden ml-2">
-          <img
-            src=""
-            alt="Profile"
-            className="w-full h-full object-cover bg-gray-300 text-white"
-          />
-        </div>
       </div>
     </header>
   );
