@@ -10,11 +10,38 @@ import Tabs from "@/components/TabsSystem/Tabs";
 import BottomMenu, { BottomTab } from "@/components/BottomMenu";
 import CreateMissionPage from "@/components/Pages/CreateMissionPage";
 import HomePage from "@/components/Pages/HomePage";
+import SettingsPage from "@/components/Pages/SettingsPage";
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<string>("Home");
 
   const tabs = [
+    new BottomTab(
+      "Create",
+      (
+        <svg
+          className="w-5 h-5"
+          style={{ scale: 1.5 }}
+          viewBox="0 -0.5 25 25"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M17.265 4.16231L19.21 5.74531C19.3978 5.9283 19.5031 6.17982 19.5015 6.44201C19.5 6.70421 19.3919 6.9545 19.202 7.13531L17.724 8.93531L12.694 15.0723C12.6069 15.1749 12.4897 15.2473 12.359 15.2793L9.75102 15.8793C9.40496 15.8936 9.10654 15.6384 9.06702 15.2943L9.18902 12.7213C9.19806 12.5899 9.25006 12.4652 9.33702 12.3663L14.15 6.50131L15.845 4.43331C16.1743 3.98505 16.7938 3.86684 17.265 4.16231Z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M5.5 18.2413C5.08579 18.2413 4.75 18.5771 4.75 18.9913C4.75 19.4056 5.08579 19.7413 5.5 19.7413V18.2413ZM19.2 19.7413C19.6142 19.7413 19.95 19.4056 19.95 18.9913C19.95 18.5771 19.6142 18.2413 19.2 18.2413V19.7413ZM14.8455 6.22062C14.6904 5.83652 14.2534 5.65082 13.8693 5.80586C13.4852 5.9609 13.2995 6.39796 13.4545 6.78206L14.8455 6.22062ZM17.8893 9.66991C18.2933 9.57863 18.5468 9.17711 18.4556 8.77308C18.3643 8.36904 17.9628 8.1155 17.5587 8.20678L17.8893 9.66991ZM5.5 19.7413H19.2V18.2413H5.5V19.7413ZM13.4545 6.78206C13.6872 7.35843 14.165 8.18012 14.8765 8.8128C15.6011 9.45718 16.633 9.95371 17.8893 9.66991L17.5587 8.20678C16.916 8.35198 16.3609 8.12551 15.8733 7.69189C15.3725 7.24656 15.0128 6.63526 14.8455 6.22062L13.4545 6.78206Z"
+            fill="currentColor"
+          />
+        </svg>
+      )
+    ),
     new BottomTab(
       "Home",
       (
@@ -26,37 +53,6 @@ export default function Home() {
           viewBox="0 0 20 20"
         >
           <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
-        </svg>
-      )
-    ),
-    new BottomTab(
-      "Search",
-      (
-        <svg
-          className="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path
-            fillRule="evenodd"
-            d="M10 2a8 8 0 100 16 8 8 0 000-16zM8 4a2 2 0 114 0 2 2 0 01-4 0zm0 1a1 1 0 112 0 1 1 0 01-2 0zm6 11a6 6 0 00-6-6V5.08a6 6 0 1012 0V10a6 6 0 00-6 6z"
-          ></path>
-        </svg>
-      )
-    ),
-    new BottomTab(
-      "Profile",
-      (
-        <svg
-          className="w-5 h-5"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm0 5a3 3 0 1 1 0 6 3 3 0 0 1 0-6Zm0 13a8.949 8.949 0 0 1-4.951-1.488A3.987 3.987 0 0 1 9 13h2a3.987 3.987 0 0 1 3.951 3.512A8.949 8.949 0 0 1 10 18Z" />
         </svg>
       )
     ),
@@ -83,11 +79,12 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col bg-white">
+    <div className="flex flex-col bg-white relative">
       <Tabs
         tabs={{
+          Create: <CreateMissionPage />,
           Home: <HomePage />,
-          Search: <CreateMissionPage />,
+          Settings: <SettingsPage />,
         }}
         activeTab={activeTab}
       />

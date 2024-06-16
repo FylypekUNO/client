@@ -14,13 +14,16 @@ const BottomMenu = ({ tabs, activeTab, setActiveTab }: BottomMenuProps) => {
   const activeTabRef = useRef<HTMLDivElement>(null);
   const overlineRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const refreshOverline = () => {
     if (activeTabRef.current && overlineRef.current) {
       const { offsetLeft, offsetWidth } = activeTabRef.current;
       overlineRef.current.style.left = `${offsetLeft}px`;
       overlineRef.current.style.width = `${offsetWidth}px`;
     }
-  }, [activeTab]);
+  };
+
+  useEffect(refreshOverline, [activeTab]);
+  refreshOverline();
 
   const handleClick = (tab: string) => {
     if (tab === activeTab) return;
@@ -29,7 +32,7 @@ const BottomMenu = ({ tabs, activeTab, setActiveTab }: BottomMenuProps) => {
 
   return (
     <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200">
-      <div className="grid h-full max-w-lg grid-cols-4 mx-auto font-medium">
+      <div className="grid h-full max-w-lg grid-cols-3 mx-auto font-medium">
         {tabs.map((tab, index) => (
           <div
             key={index}

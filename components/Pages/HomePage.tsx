@@ -1,10 +1,11 @@
 import React from "react";
 import TopMenu from "../MainPage/TopMenu";
 import MissionsInYourArea from "../MainPage/MissionsInYourArea";
-import InnerMainMissionsPage from "../InnerMainPages/InnerMainMissionsPage";
+import InnerHomeMissionsPage from "../InnerMainPages/InnerHomeMissionsPage";
 import InviteAFriend from "../MainPage/InviteAFriend";
 import Tabs from "../TabsSystem/Tabs";
-import InnerMainProfilePage from "../InnerMainPages/InnerMainProfilePage";
+import InnerHomeProfilePage from "../InnerMainPages/InnerHomeProfilePage";
+import InnerHomeDashboardPage from "../InnerMainPages/InnerHomeDashboardPage";
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = React.useState<string>("Missions");
@@ -12,15 +13,15 @@ const HomePage = () => {
   return (
     <main className="flex-grow overflow-y-auto overflow-x-hidden bg-gray-200 pb-2 min-h-80 space-y-2">
       <TopMenu
-        tabs={["Wallet", "Missions", "Profile"]}
+        tabs={["Dashboard", "Missions", "Profile"]}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
       />
       <Tabs
         tabs={{
-          Wallet: <MissionsInYourArea />,
-          Missions: <InnerMainMissionsPage />,
-          Profile: <InnerMainProfilePage />,
+          Dashboard: <InnerHomeDashboardPage />,
+          Missions: <InnerHomeMissionsPage />,
+          Profile: <InnerHomeProfilePage />,
         }}
         activeTab={activeTab}
       />

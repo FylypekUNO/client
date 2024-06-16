@@ -11,7 +11,10 @@ const Tabs = ({ tabs, activeTab }: TabsProps) => {
   return (
     <div className="relative">
       {Object.keys(tabs).map((tab, index) => (
-        <div key={index} className={`${tab === activeTab ? "" : "hidden"}`}>
+        <div
+          key={index}
+          className={`${tab === activeTab ? "" : "hidden"} relative`}
+        >
           {tabs[tab]}
         </div>
       ))}

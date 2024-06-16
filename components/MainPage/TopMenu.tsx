@@ -10,13 +10,16 @@ const TopMenu = ({ tabs, activeTab, setActiveTab }: TopMenuProps) => {
   const activeTabRef = useRef<HTMLDivElement>(null);
   const underlineRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
+  const refreshUnderline = () => {
     if (activeTabRef.current && underlineRef.current) {
       const { offsetLeft, offsetWidth } = activeTabRef.current;
       underlineRef.current.style.left = `${offsetLeft}px`;
       underlineRef.current.style.width = `${offsetWidth}px`;
     }
-  }, [activeTab]);
+  };
+
+  useEffect(refreshUnderline, [activeTab]);
+  refreshUnderline();
 
   const handleClick = (tab: string) => {
     if (tab === activeTab) return;
@@ -24,14 +27,14 @@ const TopMenu = ({ tabs, activeTab, setActiveTab }: TopMenuProps) => {
   };
 
   return (
-    <div className="relative flex flex-col justify-center h-14 bg-white border-b border-gray-200">
-      <div className="flex items-center justify-around">
+    <div className="flex flex-col justify-center h-14 bg-white border-b border-gray-200 sticky top-0">
+      <div className="grid grid-cols-3">
         {tabs.map((tab, index) => (
           <div
             key={index}
             onClick={() => handleClick(tab)}
             ref={activeTab === tab ? activeTabRef : null}
-            className={`px-4 py-2 select-none ${
+            className={`px-4 py-2 select-none text-center ${
               activeTab === tab ? "text-blue-500" : "text-gray-500"
             }`}
           >
